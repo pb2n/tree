@@ -151,7 +151,7 @@ export const generateStoryResponse = async (history: {role: string, text: string
       });
 
       const result = await chat.sendMessage({ message: userMessage });
-      return result.text;
+      return result.text || "";
     });
 
     notifyNetworkStatus(true);

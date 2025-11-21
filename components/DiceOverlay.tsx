@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { audio } from '../services/audioService';
-import { IconSparkles } from './Icons';
 
 interface DiceOverlayProps {
   statType: 'ATK' | 'DEF' | 'SPD';
