@@ -62,6 +62,16 @@ const App: React.FC = () => {
 
   // --- STAMINA REGEN & LISTENERS ---
   useEffect(() => {
+    // Check if API Key is missing on mount (Debug for deployment)
+    if (!process.env.API_KEY) {
+      setIsOnline(false);
+      setMessages(prev => [...prev, {
+        role: 'system',
+        text: `[系统警告] 未检测到 API Key。请检查 Vercel 环境变量配置 (VITE_API_KEY) 并重新部署 (Redeploy)。当前为纯离线模式。`,
+        timestamp: Date.now()
+      }]);
+    }
+
     // Auto Regen SP every second + Heartbeat
     const regenInterval = setInterval(() => {
       setSp(prev => Math.min(maxSp, prev + 1));
@@ -93,6 +103,10 @@ const App: React.FC = () => {
 
   const handleNetworkReconnect = () => {
     if (!isOnline) {
+      if (!process.env.API_KEY) {
+        setMessages(prev => [...prev, { role: 'system', text: '[连接失败] 缺少 API Key，无法重连。', timestamp: Date.now() }]);
+        return;
+      }
       resetNetworkStatus();
       setIsOnline(true); 
       setMessages(prev => [...prev, {
