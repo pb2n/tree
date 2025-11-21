@@ -1,6 +1,3 @@
-
-import { Biome, ElementType, EnemyAiType, Rarity } from "../types";
-
 // --- STORY FALLBACKS ---
 export const STORY_TEMPLATES = {
   COMBAT_ATK: [

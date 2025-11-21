@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { ChatMessage, PlayerStats, Card, Enemy, Biome, EnemyIntent } from '../types';
 import { generateStoryResponse } from '../services/geminiService';
@@ -6,7 +5,7 @@ import { Button } from './Button';
 import { DiceOverlay } from './DiceOverlay';
 import { FloatingTextOverlay, FloatingTextItem } from './FloatingText';
 import { audio } from '../services/audioService';
-import { IconSword, IconShield, IconZap, IconDice, IconSquirrel, IconHeart, IconStar, IconMap, IconTreasure, IconAlert, IconEnergy } from './Icons';
+import { IconSword, IconShield, IconZap, IconDice, IconSquirrel, IconHeart, IconMap, IconTreasure, IconAlert, IconEnergy } from './Icons';
 import { RARITY_SP_COST } from '../constants';
 
 interface StoryViewProps {

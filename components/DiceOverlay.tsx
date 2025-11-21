@@ -1,7 +1,6 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { audio } from '../services/audioService';
-import { IconSparkles, IconSkull } from './Icons';
+import { IconSparkles } from './Icons';
 
 interface DiceOverlayProps {
   statType: 'ATK' | 'DEF' | 'SPD';
@@ -10,7 +9,7 @@ interface DiceOverlayProps {
   onClose: () => void;
 }
 
-export const DiceOverlay: React.FC<DiceOverlayProps> = ({ statType, statValue, onComplete, onClose }) => {
+export const DiceOverlay: React.FC<DiceOverlayProps> = ({ statType, statValue, onComplete }) => {
   const [displayNumber, setDisplayNumber] = useState(1);
   const [phase, setPhase] = useState<'rolling' | 'slowing' | 'result'>('rolling');
   const [finalResult, setFinalResult] = useState<{roll: number, total: number} | null>(null);

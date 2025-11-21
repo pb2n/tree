@@ -1,10 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
-import { AppView, Card, ChatMessage, PlayerStats, Enemy, Biome, ElementType, EnemyIntent, Rarity, EnemyAiType, BestiaryEntry, Material } from './types';
+import { AppView, Card, ChatMessage, PlayerStats, Enemy, Biome, EnemyIntent, Rarity, EnemyAiType, BestiaryEntry, Material } from './types';
 import { StoryView } from './components/StoryView';
 import { CardForge } from './components/CardForge';
 import { CardComponent } from './components/CardComponent';
-import { IconBook, IconHexagon, IconCards, IconUser, IconSparkles, IconAlert, IconSkull, IconWifi, IconWifiOff, IconBackpack, IconBox, IconGem } from './components/Icons';
+import { IconBook, IconHexagon, IconCards, IconUser, IconSparkles, IconAlert, IconWifi, IconWifiOff, IconBackpack, IconBox, IconGem } from './components/Icons';
 import { generateEnemyData, generateCardImage, generateCardData, onNetworkStatusChange, resetNetworkStatus, onQuotaExceeded } from './services/geminiService';
 import { BIOME_LIST, BIOME_MATERIALS, ELEMENT_COLORS } from './constants';
 import { audio } from './services/audioService';

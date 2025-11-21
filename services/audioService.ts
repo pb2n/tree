@@ -1,4 +1,3 @@
-
 class AudioController {
   private ctx: AudioContext | null = null;
   private isMuted: boolean = false;
@@ -124,7 +123,6 @@ class AudioController {
   }
 
   sfxLevelUp() {
-    const now = this.getContext().currentTime;
     [440, 554, 659, 880].forEach((freq, i) => {
       setTimeout(() => this.playTone(freq, 'triangle', 0.4, 0.1), i * 150);
     });

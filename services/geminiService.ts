@@ -1,6 +1,5 @@
-
 import { GoogleGenAI, Type, Schema } from "@google/genai";
-import { Rarity, ElementType, Card, Enemy, Biome, EnemyIntent, EnemyAiType } from "../types";
+import { Rarity, ElementType, Card, Enemy, Biome, EnemyAiType } from "../types";
 import { STORY_TEMPLATES, BIOME_ENEMIES, CARD_PREFIXES, CARD_SUFFIXES, CARD_DESCRIPTIONS } from "./fallbackData";
 
 // --- Circuit Breaker State ---
