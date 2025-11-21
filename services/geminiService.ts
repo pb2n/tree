@@ -8,8 +8,10 @@ let cooldownUntil = 0; // Timestamp: When we can try API again
 let isPermanentOffline = false; // Only for missing API Key
 
 const getAiClient = () => {
-  if (!process.env.API_KEY) throw new Error("API_KEY_MISSING");
-  return new GoogleGenAI({ apiKey: process.env.API_KEY });
+  // API Key must be obtained exclusively from process.env.API_KEY
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) throw new Error("API_KEY_MISSING");
+  return new GoogleGenAI({ apiKey });
 };
 
 // --- Network Status Monitor ---
@@ -67,7 +69,8 @@ async function withRetry<T>(operation: () => Promise<T>, retries = 1, delay = 10
   }
 
   try {
-    if (!process.env.API_KEY) throw new Error("API_KEY_MISSING");
+    const apiKey = process.env.API_KEY;
+    if (!apiKey) throw new Error("API_KEY_MISSING");
     return await operation();
   } catch (error: any) {
     if (error.message === "API_KEY_MISSING") {
