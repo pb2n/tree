@@ -7,8 +7,8 @@ let cooldownUntil = 0; // Timestamp: When we can try API again
 let isPermanentOffline = false; // Only for missing API Key
 
 const getAiClient = () => {
-  // API Key must be obtained exclusively from process.env.API_KEY
-  const apiKey = process.env.API_KEY;
+  // FIX: Use import.meta.env for Vite compatibility
+  const apiKey = import.meta.env.VITE_API_KEY;
   if (!apiKey) throw new Error("API_KEY_MISSING");
   return new GoogleGenAI({ apiKey });
 };
@@ -68,7 +68,8 @@ async function withRetry<T>(operation: () => Promise<T>, retries = 1, delay = 10
   }
 
   try {
-    const apiKey = process.env.API_KEY;
+    // FIX: Use import.meta.env for Vite compatibility
+    const apiKey = import.meta.env.VITE_API_KEY;
     if (!apiKey) throw new Error("API_KEY_MISSING");
     return await operation();
   } catch (error: any) {

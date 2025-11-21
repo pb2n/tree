@@ -63,7 +63,8 @@ const App: React.FC = () => {
   // --- STAMINA REGEN & LISTENERS ---
   useEffect(() => {
     // Check if API Key is missing on mount (Debug for deployment)
-    if (!process.env.API_KEY) {
+    // FIX: Use import.meta.env
+    if (!import.meta.env.VITE_API_KEY) {
       setIsOnline(false);
       setMessages(prev => [...prev, {
         role: 'system',
@@ -103,7 +104,8 @@ const App: React.FC = () => {
 
   const handleNetworkReconnect = () => {
     if (!isOnline) {
-      if (!process.env.API_KEY) {
+      // FIX: Use import.meta.env
+      if (!import.meta.env.VITE_API_KEY) {
         setMessages(prev => [...prev, { role: 'system', text: '[连接失败] 缺少 API Key，无法重连。', timestamp: Date.now() }]);
         return;
       }
